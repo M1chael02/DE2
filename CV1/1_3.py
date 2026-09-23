@@ -1,4 +1,5 @@
 import time
+import math
 
 def func():
     """My new function."""
@@ -36,7 +37,24 @@ def factorial(n):
     else:
         return (n * factorial(n - 1))
 
-    
+def solve_quadratic(a, b, c):
+    #solves equation using quadratic formula
+    D = (b**2 - 4*a*c)
+
+    if D > 0: 
+        x1 = ((-b + math.sqrt(D)) / 2*a)
+        x2 = ((-b - math.sqrt(D)) / 2*a)
+
+        return (x1, x2)
+        #print(f"x2 = {x2}")
+
+    elif D == 0:
+        x = (-b / 2*a)
+        return x
+        #print(f"x = {x}")
+
+    else:
+        return "No real solutions"
 
 # Run this only when executed directly, not when imported
 if __name__ == "__main__":
@@ -44,5 +62,9 @@ if __name__ == "__main__":
     #triangle(5)
     #fibonacci(10)
 
-    print(f"5! = {factorial(5)}")  # Should print 120
-    print(f"0! = {factorial(0)}")  # Should print 1
+    #print(f"5! = {factorial(5)}")  # Should print 120
+    #print(f"0! = {factorial(0)}")  # Should print 1
+
+    print(solve_quadratic(1, -3, 2))  # Expected: (2.0, 1.0)
+    print(solve_quadratic(1, 2, 1))  # Expected: -1.0
+    print(solve_quadratic(1, 1, 1))  # Expected: "No real solutions"
