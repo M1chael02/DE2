@@ -21,7 +21,7 @@ def fibonacci(n):
 
     for _ in range(n):
         fib_list.append(a)
-        a, b = b, a + b
+        (a, b) = (b, a + b)
 
     end_time = time.ticks_us()
     duration = end_time - start_time
