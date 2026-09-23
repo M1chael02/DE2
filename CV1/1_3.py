@@ -17,15 +17,18 @@ def fibonacci(n):
     # TODO: Generate the first n Fibonacci numbers
 
     a, b = 0, 1
+    fib_list = []
 
     for _ in range(n):
-        print(a, end=" ")
+        fib_list.append(a)
         a, b = b, a + b
 
     end_time = time.ticks_us()
     duration = end_time - start_time
     print()
     print(f"Execution time: {duration} us")
+
+    return fib_list
 
 def factorial(n):
     """Return the factorial of a non-negative integer n."""
@@ -60,11 +63,11 @@ def solve_quadratic(a, b, c):
 if __name__ == "__main__":
     #func()
     #triangle(5)
-    #fibonacci(10)
+    #print(fibonacci(10))
 
     #print(f"5! = {factorial(5)}")  # Should print 120
     #print(f"0! = {factorial(0)}")  # Should print 1
 
-    print(solve_quadratic(1, -3, 2))  # Expected: (2.0, 1.0)
-    print(solve_quadratic(1, 2, 1))  # Expected: -1.0
+    #print(solve_quadratic(1, -3, 2))  # Expected: (2.0, 1.0)
+    #print(solve_quadratic(1, 2, 1))  # Expected: -1.0
     print(solve_quadratic(1, 1, 1))  # Expected: "No real solutions"
