@@ -1,4 +1,5 @@
 from machine import ADC
+from gpio_devices import Button
 import time
 
 def read_ADC(adc, samples):
@@ -16,7 +17,8 @@ def read_ADC(adc, samples):
 def main():
     adc_x = ADC(26)
     adc_y = ADC(27)
-    
+
+    button = Button(17)
     
     print("Turn the potentiometer; press Ctrl+C to stop.")
 
@@ -26,10 +28,13 @@ def main():
             raw_y, voltage_y = read_ADC(adc_y, 10)
 
             print(
-                f"raw_x: {raw_x:5d}\tvoltage_x: {voltage_x:.3f} V\n"
-                f"raw_y: {raw_y:5d}\tvoltage_y: {voltage_y:.3f} V\n" 
+                f"\rraw_x: {raw_x:5d}\tvoltage_x: {voltage_x:.3f} V\t"
+                f"raw_y: {raw_y:5d}\tvoltage_y: {voltage_y:.3f} V", end="" 
             )
-            time.sleep_ms(100)
+
+            if button.was_pressed():
+                print("\nButton was pressed")
+            time.sleep_ms(50)
 
     except KeyboardInterrupt:
         print("\nProgram stopped. Exiting...")
